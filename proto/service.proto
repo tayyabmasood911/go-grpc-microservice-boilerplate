@@ -1,10 +1,62 @@
 syntax = "proto3";
-package api.v1;
-option go_package = "github.com/T9113/go-grpc/api/v1;v1";
 
+package api.v1;
+
+option go_package = "github.com/tayyabmasood911/go-grpc-microservice-boilerplate/proto/v1;v1";
+
+// HealthService provides system health status endpoints conforming to enterprise probes.
 service HealthService {
   rpc Check (HealthRequest) returns (HealthResponse);
+  rpc Watch (HealthRequest) returns (stream HealthResponse);
 }
 
-message HealthRequest { string service = 1; }
-message HealthResponse { string status = 1; }
+message HealthRequest {
+  string service = 1;
+}
+
+message HealthResponse {
+  enum ServingStatus {
+    UNKNOWN = 0;
+    SERVING = 1;
+    NOT_SERVING = 2;
+    SERVICE_UNKNOWN = 3;
+  }
+  ServingStatus status = 1;
+  string message = 2;
+  int64 timestamp = 3;
+}
+
+// UserService provides core domain operations for user entity management.
+service UserService {
+  rpc GetUser (GetUserRequest) returns (UserResponse);
+  rpc CreateUser (CreateUserRequest) returns (UserResponse);
+  rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
+}
+
+message GetUserRequest {
+  string user_id = 1;
+}
+
+message CreateUserRequest {
+  string username = 1;
+  string email = 2;
+  string role = 3;
+}
+
+message UserResponse {
+  string user_id = 1;
+  string username = 2;
+  string email = 3;
+  string role = 4;
+  int64 created_at = 5;
+}
+
+message ListUsersRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListUsersResponse {
+  repeated UserResponse users = 1;
+  string next_page_token = 2;
+}

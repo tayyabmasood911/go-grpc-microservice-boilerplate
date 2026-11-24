@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="100%" height="100%" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <filter id="softShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="640" fill="#ffffff"/>
+
+  <!-- Top Title Bar -->
+  <rect x="40" y="24" width="1120" height="60" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5" filter="url(#softShadow)"/>
+  <text x="70" y="60" fill="#0f172a" font-size="20" font-weight="700" letter-spacing="0.3">Enterprise Go gRPC Microservice Architecture</text>
+  <rect x="850" y="40" width="85" height="26" rx="13" fill="#ecfdf5" stroke="#10b981" stroke-width="1"/>
+  <text x="864" y="58" fill="#047857" font-size="11" font-weight="600">PRODUCTION</text>
+  <rect x="945" y="40" width="85" height="26" rx="13" fill="#eff6ff" stroke="#3b82f6" stroke-width="1"/>
+  <text x="960" y="58" fill="#1d4ed8" font-size="11" font-weight="600">GO 1.22+</text>
+  <rect x="1040" y="40" width="105" height="26" rx="13" fill="#f0fdf4" stroke="#22c55e" stroke-width="1"/>
+  <text x="1050" y="58" fill="#15803d" font-size="11" font-weight="600">gRPC/PROTO3</text>
+
+  <!-- COLUMN 1: Transport & Ingress -->
+  <rect x="40" y="110" width="250" height="490" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#softShadow)"/>
+  <rect x="40" y="110" width="250" height="40" rx="8" fill="#f1f5f9"/>
+  <text x="60" y="136" fill="#0284c7" font-size="13" font-weight="700">1. TRANSPORT &amp; INGRESS</text>
+
+  <rect x="60" y="170" width="210" height="90" rx="6" fill="#f0f9ff" stroke="#7dd3fc" stroke-width="1"/>
+  <text x="75" y="198" fill="#0369a1" font-size="13" font-weight="600">HTTP/2 Framing</text>
+  <text x="75" y="222" fill="#0c4a6e" font-size="11">Multiplexed Bidirectional Streams</text>
+  <text x="75" y="242" fill="#0284c7" font-size="10">Header compression (HPACK)</text>
+
+  <rect x="60" y="280" width="210" height="85" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="75" y="308" fill="#0f172a" font-size="13" font-weight="600">TCP Listener (:50051)</text>
+  <text x="75" y="332" fill="#64748b" font-size="11">Non-blocking net.Listener</text>
+  <text x="75" y="350" fill="#64748b" font-size="10">Max connection age &amp; grace</text>
+
+  <rect x="60" y="385" width="210" height="95" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="75" y="413" fill="#0f172a" font-size="13" font-weight="600">Keepalive Enforcement</text>
+  <text x="75" y="437" fill="#64748b" font-size="11">ServerParameters Keepalive</text>
+  <text x="75" y="457" fill="#64748b" font-size="10">Detects dead sockets &amp; resets</text>
+
+  <rect x="60" y="500" width="210" height="75" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="75" y="528" fill="#0f172a" font-size="13" font-weight="600">TLS 1.3 / mTLS Ready</text>
+  <text x="75" y="552" fill="#64748b" font-size="11">Zero-trust service mesh auth</text>
+
+  <!-- COLUMN 2: Interceptor Pipeline -->
+  <rect x="320" y="110" width="260" height="490" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#softShadow)"/>
+  <rect x="320" y="110" width="260" height="40" rx="8" fill="#f1f5f9"/>
+  <text x="340" y="136" fill="#d97706" font-size="13" font-weight="700">2. INTERCEPTOR CHAIN</text>
+
+  <rect x="340" y="170" width="220" height="95" rx="6" fill="#fffbeb" stroke="#fcd34d" stroke-width="1"/>
+  <text x="355" y="198" fill="#b45309" font-size="13" font-weight="700">Recovery Interceptor</text>
+  <text x="355" y="222" fill="#78350f" font-size="11">Catches panics inside handlers</text>
+  <text x="355" y="242" fill="#92400e" font-size="10">Captures debug.Stack() traces</text>
+  <text x="355" y="258" fill="#92400e" font-size="10">Returns clean codes.Internal</text>
+
+  <rect x="340" y="285" width="220" height="95" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="355" y="313" fill="#0f172a" font-size="13" font-weight="600">Logging Interceptor</text>
+  <text x="355" y="337" fill="#64748b" font-size="11">Structured RPC audit logs</text>
+  <text x="355" y="355" fill="#64748b" font-size="11">method, latency, status code</text>
+  <text x="355" y="373" fill="#64748b" font-size="10">Context deadline tracking</text>
+
+  <rect x="340" y="400" width="220" height="85" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="355" y="428" fill="#0f172a" font-size="13" font-weight="600">Auth &amp; Metadata</text>
+  <text x="355" y="452" fill="#64748b" font-size="11">gRPC metadata header parsing</text>
+  <text x="355" y="470" fill="#64748b" font-size="10">Token validation &amp; RBAC checks</text>
+
+  <rect x="340" y="505" width="220" height="70" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="355" y="533" fill="#0f172a" font-size="13" font-weight="600">Message Size Guard</text>
+  <text x="355" y="557" fill="#64748b" font-size="11">16MB MaxRecv / MaxSend protection</text>
+
+  <!-- COLUMN 3: Core Business Services -->
+  <rect x="610" y="110" width="280" height="490" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#softShadow)"/>
+  <rect x="610" y="110" width="280" height="40" rx="8" fill="#f1f5f9"/>
+  <text x="630" y="136" fill="#16a34a" font-size="13" font-weight="700">3. CORE gRPC SERVICES</text>
+
+  <rect x="630" y="170" width="240" height="110" rx="6" fill="#f0fdf4" stroke="#86efac" stroke-width="1"/>
+  <text x="645" y="198" fill="#15803d" font-size="13" font-weight="700">HealthServiceServer</text>
+  <text x="645" y="222" fill="#166534" font-size="11">Check() &amp; Watch() Streaming</text>
+  <text x="645" y="242" fill="#14532d" font-size="10">Standard ServingStatus Enum</text>
+  <text x="645" y="260" fill="#15803d" font-size="10">Dynamic per-service status updates</text>
+
+  <rect x="630" y="300" width="240" height="115" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="645" y="328" fill="#0f172a" font-size="13" font-weight="600">UserServiceServer</text>
+  <text x="645" y="352" fill="#64748b" font-size="11">CreateUser(), GetUser(), ListUsers()</text>
+  <text x="645" y="372" fill="#64748b" font-size="10">Thread-safe sync.RWMutex memory store</text>
+  <text x="645" y="390" fill="#64748b" font-size="10">Canonical codes.NotFound/InvalidArgument</text>
+
+  <rect x="630" y="435" width="240" height="80" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="645" y="463" fill="#0f172a" font-size="13" font-weight="600">Protobuf v3 Schema</text>
+  <text x="645" y="487" fill="#64748b" font-size="11">Compact binary serialization</text>
+  <text x="645" y="505" fill="#64748b" font-size="10">Forward/backward schema evolution</text>
+
+  <rect x="630" y="530" width="240" height="50" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="645" y="555" fill="#0f172a" font-size="12" font-weight="600">Context Deadlines Propagation</text>
+
+  <!-- COLUMN 4: Lifecycle & Observability -->
+  <rect x="920" y="110" width="240" height="490" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#softShadow)"/>
+  <rect x="920" y="110" width="240" height="40" rx="8" fill="#f1f5f9"/>
+  <text x="940" y="136" fill="#7c3aed" font-size="13" font-weight="700">4. RUNTIME LIFECYCLE</text>
+
+  <rect x="940" y="170" width="200" height="95" rx="6" fill="#f5f3ff" stroke="#c4b5fd" stroke-width="1"/>
+  <text x="955" y="198" fill="#6d28d9" font-size="13" font-weight="700">Server Reflection</text>
+  <text x="955" y="222" fill="#5b21b6" font-size="11">reflection.Register(s)</text>
+  <text x="955" y="242" fill="#4c1d95" font-size="10">grpcurl &amp; Postman schema probe</text>
+  <text x="955" y="258" fill="#6d28d9" font-size="10">No proto file required at call site</text>
+
+  <rect x="940" y="285" width="200" height="95" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="955" y="313" fill="#0f172a" font-size="13" font-weight="600">GracefulStop() Handler</text>
+  <text x="955" y="337" fill="#64748b" font-size="11">SIGINT / SIGTERM traps</text>
+  <text x="955" y="355" fill="#64748b" font-size="11">Drains active in-flight RPCs</text>
+  <text x="955" y="373" fill="#64748b" font-size="10">10s timeout force shutdown fallback</text>
+
+  <rect x="940" y="400" width="200" height="95" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="955" y="428" fill="#0f172a" font-size="13" font-weight="600">Kubernetes Probes</text>
+  <text x="955" y="452" fill="#64748b" font-size="11">grpc_health_probe native</text>
+  <text x="955" y="472" fill="#64748b" font-size="10">Zero downtime pod rolling updates</text>
+
+  <rect x="940" y="515" width="200" height="65" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="955" y="540" fill="#0f172a" font-size="12" font-weight="600">Prometheus Metrics</text>
+  <text x="955" y="560" fill="#64748b" font-size="10">Latency histogram &amp; RPC counters</text>
+</svg>
